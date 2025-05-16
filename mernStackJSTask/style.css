@@ -1,0 +1,351 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f0fa; 
+    color: #2d2d2d;
+    margin: 20px auto;
+    max-width: 700px;
+    line-height: 1.5;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: black; 
+    padding-bottom: 0;
+    margin: 0;
+    letter-spacing: 1.5px;
+    text-decoration: none; 
+}
+
+/* Container for buttons */
+.header-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+/* Add Job button */
+#toggle-form {
+    padding: 10px 18px;
+    font-size: 14px;
+    background-color: #6f42c1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+#toggle-form:hover {
+    background-color: #5936a2;
+}
+
+/* Logout button */
+#logout-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+    background-color: #fd7e14;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#logout-btn:hover {
+    background-color: #e46a0a;
+}
+
+/* Add Job Form */
+form#add-job-form {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+form#add-job-form input,
+form#add-job-form textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+form#add-job-form textarea {
+    min-height: 80px;
+}
+
+form#add-job-form button[type="submit"] {
+    background-color: #20c997;
+    color: white;
+    padding: 12px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form#add-job-form button[type="submit"]:hover {
+    background-color: #17a589;
+}
+
+#job-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+/* Job cards */
+.job {
+    border: 2px solid black;
+    background-color: white;
+    padding: 16px 20px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: box-shadow 0.3s ease;
+    width: 300px;
+    margin: 0;
+}
+
+.job:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.job h3 {
+    margin: 0 0 8px 0;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.company-location {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.job h3 + .company-location {
+    margin-top: 6px;
+}
+
+.description {
+    font-size: 14px;
+    color: #4a4a4a;
+    margin-bottom: 12px;
+}
+
+/* Apply button */
+button.apply-button {
+    background-color: #6f42c1;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    display: flex;
+}
+
+button.apply-button:hover:not(:disabled) {
+    background-color: #5936a2;
+}
+
+button.apply-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.35);
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 8% auto;
+    padding: 25px 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    font-family: inherit;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.modal-content button {
+    margin-top: 22px;
+    width: 100%;
+    background-color: #6f42c1;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #5936a2;
+}
+
+/* Close button */
+.close-button {
+    float: right;
+    font-size: 22px;
+    font-weight: 700;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover {
+    color: #444;
+}
+
+/* Auth container */
+#auth-container {
+    max-width: 360px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Register and Login Forms */
+form#register-form,
+form#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+form#register-form input,
+form#login-form input {
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+form#register-form button,
+form#login-form button {
+    background-color: #6f42c1;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+form#register-form button:hover,
+form#login-form button:hover {
+    background-color: #5936a2;
+}
+
+form#register-form p,
+form#login-form p {
+    font-size: 14px;
+    color: #444;
+    margin: 0;
+}
+
+form#register-form p a,
+form#login-form p a {
+    color: #6f42c1;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+form#register-form p a:hover,
+form#login-form p a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Message placeholders */
+#reg-message,
+#login-message {
+    font-size: 13px;
+    color: red;
+    height: 16px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    form#add-job-form input,
+    form#add-job-form textarea,
+    .modal-content input,
+    form#register-form input,
+    form#login-form input {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+
+    button.apply-button,
+    #toggle-form,
+    #logout-btn,
+    form#add-job-form button[type="submit"],
+    .modal-content button,
+    form#register-form button,
+    form#login-form button {
+        font-size: 13px;
+        padding: 10px 14px;
+    }
+}
